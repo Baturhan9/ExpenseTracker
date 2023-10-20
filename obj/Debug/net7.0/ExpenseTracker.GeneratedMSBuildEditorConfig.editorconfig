@@ -16,12 +16,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = /run/media/baturhan/Новый том/C sharp project/ExpenseTracker
 build_property._RazorSourceGeneratorDebug = 
 
-[/run/media/baturhan/Новый том/C sharp project/ExpenseTracker/Views/Client/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50L0luZGV4LmNzaHRtbA==
+[/run/media/baturhan/Новый том/C sharp project/ExpenseTracker/Views/Client/ClientMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50L0NsaWVudE1lbnUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/run/media/baturhan/Новый том/C sharp project/ExpenseTracker/Views/Guest/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3Vlc3QvSW5kZXguY3NodG1s
+[/run/media/baturhan/Новый том/C sharp project/ExpenseTracker/Views/Client/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/run/media/baturhan/Новый том/C sharp project/ExpenseTracker/Views/Home/Index.cshtml]

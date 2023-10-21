@@ -1,0 +1,45 @@
+
+@using ExpenseTracker.Models.ViewModels.Client;
+@model CreateClientViewModel;
+@{
+    ViewData["Title"] = "Create an accouint";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <h1>Регистрация пользователя</h1>
+    <form method="post">
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" id="inputName" class="form-control" asp-for="Name" placeholder="Введите имя"/>
+        <span asp-validation-for="Name"></span>
+      </div>
+      <div class="form-group">
+        <label for="inputLogin">Login</label>
+        <input type="text" id="inputLogin" class="form-control" asp-for="Login" placeholder="Введите логин"/>
+        <span asp-validation-for="Login"></span>
+        <span>@ViewBag.Exist</span>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" id="inputPassword" class="form-control" asp-for="Password" placeholder="Введите пароль"/>
+        <span asp-validation-for="Password"></span>
+      </div>
+      <div class="form-group">
+        <label for="inputConfirmPassword">Repeat Password</label>
+        <input type="password" id="inputConfirmPassword" class="form-control" asp-for="RepeatPassword" placeholder="Повторите пароль"/>
+        <span asp-validation-for="RepeatPassword"></span>
+        <span>@ViewBag.NotSame</span>
+      </div>
+      <p></p>
+      <button type="submit" class="btn btn-primary">Registration</button>
+    </form>
+</div>
+
+
+<style>
+    span{
+        color:red;
+    }
+</style>

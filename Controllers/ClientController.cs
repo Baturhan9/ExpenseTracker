@@ -8,6 +8,7 @@ using ExpenseTracker.Data;
 using ExpenseTracker.Interfaces;
 using ExpenseTracker.Interfaces.ClientInterface;
 using ExpenseTracker.Models;
+using ExpenseTracker.Models.ViewModels.Client;
 using ExpenseTracker.Repositorys;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,11 +21,11 @@ namespace ExpenseTracker.Controllers
         private readonly IRepository<Client> _repository;
         private readonly IClientFinder _finder;
         private readonly IHttpContextAccessor _http;
-        public ClientController(ILogger<ClientController> logger,IHttpContextAccessor http)
+        public ClientController(ILogger<ClientController> logger,IHttpContextAccessor http, IRepository<Client> repository)
         {
             _logger = logger;
             _http = http;
-            _repository = new ClientRepository();
+            _repository = repository;
             _finder = new ClientRepository();
         }
 
@@ -49,7 +50,32 @@ namespace ExpenseTracker.Controllers
             return RedirectToAction("ClientMenu");
         }
         public IActionResult ClientMenu() => View();
+        public IActionResult CreateClient() => View();
+        [HttpPost]
+        public IActionResult CreateClient(CreateClientViewModel clientObj)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(clientObj);
+            }
 
+            if(_finder.FindClient(clientObj.Login) != null) 
+            {
+                ViewBag.Exist = "this login already exists, make up a new one";
+                return View(clientObj);
+            }
+            
+            var client = new Client()
+            {
+                CName = clientObj.Name,
+                CLogin = clientObj.Login,
+                CPassword = clientObj.Password
+            };
+            _repository.Create(client);
+            _repository.Save();
+            
+            return RedirectToAction("Index");
+        }
         
         private bool isEmptyField(string s1, string s2)
         {

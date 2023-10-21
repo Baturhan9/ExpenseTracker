@@ -68,4 +68,8 @@ public class ClientRepository : IRepository<Client>, IClientFinder
     {
         return db.Clients.FirstOrDefault(c => c.CLogin == loing && c.CPassword == password);
     }
+    public Client? FindClient(string login)
+    {
+        return db.Clients.FirstOrDefault(c=> c.CLogin == login);
+    }
 }

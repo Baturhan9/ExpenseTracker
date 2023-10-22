@@ -1,4 +1,5 @@
 using ExpenseTracker.Interfaces;
+using ExpenseTracker.Interfaces.ExpenseGroupInterface;
 using ExpenseTracker.Middleware;
 using ExpenseTracker.Models;
 using ExpenseTracker.Repositorys;
@@ -14,7 +15,7 @@ builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<IRepository<Client>, ClientRepository>();
-
+builder.Services.AddScoped<IExpenseGroupRepository, ExpenseRepository>();
 
 builder.Services.AddDbContext<AppExpenseTrackerContext>(option =>
     option.UseNpgsql("Host=localhost;Port=5432;Database=app_expense_tracker;username=postgres;password="));

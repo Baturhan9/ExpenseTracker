@@ -1,4 +1,5 @@
 using ExpenseTracker.Interfaces;
+using ExpenseTracker.Middleware;
 using ExpenseTracker.Models;
 using ExpenseTracker.Repositorys;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<AppExpenseTrackerContext>(option =>
     option.UseNpgsql("Host=localhost;Port=5432;Database=app_expense_tracker;username=postgres;password="));
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

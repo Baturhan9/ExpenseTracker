@@ -20,11 +20,9 @@ namespace ExpenseTracker.Controllers
         private readonly ILogger<ClientController> _logger;
         private readonly IRepository<Client> _repository;
         private readonly IClientFinder _finder;
-        private readonly IHttpContextAccessor _http;
-        public ClientController(ILogger<ClientController> logger,IHttpContextAccessor http, IRepository<Client> repository)
+        public ClientController(ILogger<ClientController> logger, IRepository<Client> repository)
         {
             _logger = logger;
-            _http = http;
             _repository = repository;
             _finder = new ClientRepository();
         }
@@ -47,9 +45,19 @@ namespace ExpenseTracker.Controllers
                 ViewBag.NotFound = "no user was found";
                 return View();
             }
+
+            HttpContext.Session.SetInt32("ClientId", client.Id);
             return RedirectToAction("ClientMenu");
         }
-        public IActionResult ClientMenu() => View();
+        public IActionResult ClientMenu()
+        {
+            var clientId = HttpContext.Session.GetInt32("ClientId");
+            if(clientId == null)
+                return NotFound();
+            var client = _repository.GetOne(clientId.Value);
+            ViewData["ClientName"] = client.CName;
+            return View();
+        }
         public IActionResult CreateClient() => View();
         [HttpPost]
         public IActionResult CreateClient(CreateClientViewModel clientObj)

@@ -1,12 +1,12 @@
 create table Client(
-    id int primary key AUTO_INCREMENT,
+    id SERIAL primary key,
     c_login varchar(50) not null,
     c_password varchar(50) not null,
     c_name varchar(50) not null
 );
 
 create table Expense_group(
-    id int primary key AUTO_INCREMENT,
+    id SERIAL primary key,
     client_id int,
     eg_name varchar(50),
     eg_amount_spends decimal(10,2),
@@ -16,7 +16,7 @@ create table Expense_group(
 );
 
 CREATE TABLE Spending(
-    id int primary key AUTO_INCREMENT,
+    id SERIAL primary key,
     expense_group_id int,
     client_id int,
     s_value decimal(10,2),

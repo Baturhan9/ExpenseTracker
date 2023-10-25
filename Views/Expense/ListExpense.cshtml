@@ -1,0 +1,54 @@
+@model List<ExpenseGroup>;
+@{
+    ViewData["Title"] = "There are you expense Group";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if(@Model.Count == 0)
+{
+    <h2>empty. Create your first group</h2>
+}
+else
+{
+    foreach(var item in Model)
+    {
+        <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+            <div class="card-header">@item.EgName</div>
+            <div class="card-body">
+                <h4 class="card-title">@item.EgAmountSpends $</h4>
+                <p class="card-text">@item.EgExtraInfo</p>
+            </div>
+        </div>
+    }
+}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  + Create a group
+</button>
+
+<!-- Modal -->
+<form method="post" asp-action="CreateGroup">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Create a group</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <input hidden value="@ViewData["ClientId"]" name="clientId"/>
+            <label for="nameGroup">Название*:</label>
+            <input type="text" id="nameGroup" name="nameGroup" size="20" maxlength="50"><br>
+            <p></p>
+            <label for="descriptionGroup">Описание:</label>
+            <textarea id="descriptionGroup" name="descriptionGroup" rows="3" cols="40" maxlength="150"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

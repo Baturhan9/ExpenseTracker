@@ -1,6 +1,7 @@
 @model List<ExpenseGroup>;
 @{
     ViewData["Title"] = "There are you expense Group";
+    int groupId = -1;
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -18,7 +19,11 @@ else
             <div class="card-body">
                 <h4 class="card-title">@item.EgAmountSpends $</h4>
                 <p class="card-text">@item.EgExtraInfo</p>
-            </div>
+                  <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" data-bs-itemid="@item.Id">
+                      + Add spending
+                    </button>
+              </div>
         </div>
     }
 }
@@ -26,7 +31,6 @@ else
 <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
   + Create a group
 </button>
-
 <!-- Modal -->
 <form method="post" asp-action="CreateGroup">
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -38,10 +42,10 @@ else
       </div>
       <div class="modal-body">
             <input hidden value="@ViewData["ClientId"]" name="clientId"/>
-            <label for="nameGroup">Название*:</label>
+            <label for="nameGroup">Name*:</label>
             <input type="text" id="nameGroup" name="nameGroup" size="20" maxlength="50"><br>
             <p></p>
-            <label for="descriptionGroup">Описание:</label>
+            <label for="descriptionGroup">Description:</label>
             <textarea id="descriptionGroup" name="descriptionGroup" rows="3" cols="40" maxlength="150"></textarea>
       </div>
       <div class="modal-footer">
@@ -52,3 +56,45 @@ else
   </div>
 </div>
 </form>
+
+<!--  Modal for spending  -->
+<form method="post" asp-action="AddSpending" asp-controller="Spending">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Create a group</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" id="itemid-name" hidden name="groupId">
+        <input hidden value="@ViewData["ClientId"]" name="clientId"/>
+        <label for="valueSpend">Value</label>
+        <input type="number" id="valueSpend" name="valueSpend" size="20" min="1" max="9999999"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<script>
+  const exampleModal = document.getElementById('exampleModalCenter')
+  if (exampleModalCenter) {
+  exampleModalCenter.addEventListener('show.bs.modal', event => {
+    // Button that triggered the modal
+    const button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    const itemid = button.getAttribute('data-bs-itemid')
+    // If necessary, you could initiate an Ajax request here
+    // and then do the updating in a callback.
+
+    // Update the modal's content.
+    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+    modalBodyInput.value = itemid 
+  })
+}
+</script>

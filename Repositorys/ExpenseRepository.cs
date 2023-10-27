@@ -76,5 +76,7 @@ namespace ExpenseTracker.Repositorys
         {
             return _db.ExpenseGroups.FirstOrDefault(e => e.ClientId==clientId && e.Id==id);
         }
+
+        
     }
 }

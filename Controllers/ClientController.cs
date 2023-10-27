@@ -4,14 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using ExpenseTracker.Data;
 using ExpenseTracker.Interfaces;
 using ExpenseTracker.Interfaces.ClientInterface;
 using ExpenseTracker.Models;
-<<<<<<< HEAD
-=======
 using ExpenseTracker.Models.ViewModels.Client;
->>>>>>> ExpenseController
 using ExpenseTracker.Repositorys;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,19 +19,10 @@ namespace ExpenseTracker.Controllers
         private readonly ILogger<ClientController> _logger;
         private readonly IRepository<Client> _repository;
         private readonly IClientFinder _finder;
-<<<<<<< HEAD
-        private readonly IHttpContextAccessor _http;
-        public ClientController(ILogger<ClientController> logger,IHttpContextAccessor http)
-        {
-            _logger = logger;
-            _http = http;
-            _repository = new ClientRepository();
-=======
         public ClientController(ILogger<ClientController> logger, IRepository<Client> repository)
         {
             _logger = logger;
             _repository = repository;
->>>>>>> ExpenseController
             _finder = new ClientRepository();
         }
 
@@ -57,12 +44,6 @@ namespace ExpenseTracker.Controllers
                 ViewBag.NotFound = "no user was found";
                 return View();
             }
-<<<<<<< HEAD
-            return RedirectToAction("ClientMenu");
-        }
-        public IActionResult ClientMenu() => View();
-
-=======
 
             HttpContext.Session.SetInt32("ClientId", client.Id);
             return RedirectToAction("ClientMenu");
@@ -102,7 +83,6 @@ namespace ExpenseTracker.Controllers
             
             return RedirectToAction("Index");
         }
->>>>>>> ExpenseController
         
         private bool isEmptyField(string s1, string s2)
         {

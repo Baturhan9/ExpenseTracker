@@ -9,5 +9,9 @@ namespace ExpenseTracker.Interfaces.ClientInterface
     public interface IClientFinder 
     {
         Client? FindClient(string login, string password); 
+<<<<<<< HEAD
+=======
+        Client? FindClient(string login);
+>>>>>>> ExpenseController
     }
 }

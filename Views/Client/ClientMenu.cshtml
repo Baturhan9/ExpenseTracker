@@ -1,4 +1,22 @@
 @{
+<<<<<<< HEAD
     ViewData["Title"] = "Hello hero";
 }
 <h1>@ViewData["Title"]</h1>
+=======
+    ViewData["Title"] = $"Hello Mr(s). {ViewData["ClientName"]}";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="list-group panel">
+    <a asp-controller="Expense" asp-action="ListExpense" class="list-group-item list-group-item-action">See all expense</a>
+    <a asp-controller="Expense" asp-action="ListExpense" class="list-group-item list-group-item-action">See all expense</a>
+    <a asp-controller="Expense" asp-action="ListExpense" class="list-group-item list-group-item-action">See all expense</a>
+</div>
+
+<style>
+    .panel{
+        width: 50%;
+    }
+</style>
+>>>>>>> ExpenseController

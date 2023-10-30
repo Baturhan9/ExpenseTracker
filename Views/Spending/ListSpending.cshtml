@@ -1,0 +1,43 @@
+@using ExpenseTracker.Repositorys;
+@model List<Spending>;
+@{
+    ViewData["Title"] = "There are all your spendings";
+    int i = 0;
+    int NumericRow()
+    {
+        i++;
+        return i;
+    }
+    ExpenseRepository rep = new();
+    string GetGroupName(int? groupId)
+    {
+        if(groupId == null)
+            return "Not Found";
+        var group = rep.GetOne(groupId.Value);
+        if(group == null)
+            return "Not Found";
+        return group.EgName;
+    }
+}
+
+<h1>@ViewData["Title"]</h1>
+<a asp-controller="Client" asp-action="ClientMenu" class="btn btn-secondary">GoBack</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name Group</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <th scope="row">@NumericRow()</th>
+                <td>@GetGroupName(item.ExpenseGroupId)</td>
+                <td>@item.SValue</td>
+            </tr>
+        }
+    </tbody>
+</table>

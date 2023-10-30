@@ -40,7 +40,14 @@ namespace ExpenseTracker.Controllers
              _repository.Save();
             return RedirectToAction("ListExpense","Expense");
         }
-
+        public IActionResult ListSpending()
+        {
+            int? clientId = HttpContext.Session.GetInt32("ClientId");
+            if(clientId == null)
+                return NotFound();
+            var listSpending = _repository.GetByClient(clientId.Value);
+            return View(listSpending);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

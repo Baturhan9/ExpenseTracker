@@ -1,11 +1,10 @@
 @model List<ExpenseGroup>;
 @{
     ViewData["Title"] = "There are you expense Group";
-    int groupId = -1;
 }
 
 <h1>@ViewData["Title"]</h1>
-
+<a asp-controller="Client" asp-action="ClientMenu" class="btn btn-secondary">GoBack</a>
 @if(@Model.Count == 0)
 {
     <h2>empty. Create your first group</h2>

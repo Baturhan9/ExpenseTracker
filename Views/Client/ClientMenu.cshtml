@@ -1,7 +1,11 @@
 @{
     ViewData["Title"] = $"Hello Mr(s). {ViewData["ClientName"]}";
 }
+<a class="btn btn-info" asp-action="Exit">Exit</a>
 <h1>@ViewData["Title"]</h1>
+
+<p></p>
+
 
 <div class="list-group panel">
     <a asp-controller="Expense" asp-action="ListExpense" class="list-group-item list-group-item-action">See all group</a>

@@ -46,6 +46,7 @@ namespace ExpenseTracker.Controllers
             }
 
             HttpContext.Session.SetInt32("ClientId", client.Id);
+            HttpContext.Response.Cookies.Append("ClientId", client.Id.ToString());
             return RedirectToAction("ClientMenu");
         }
         public IActionResult ClientMenu()
@@ -81,6 +82,13 @@ namespace ExpenseTracker.Controllers
             _repository.Create(client);
             _repository.Save();
             
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Exit()
+        {
+            HttpContext.Session.Clear();
+            HttpContext.Response.Cookies.Delete("ClientId");
             return RedirectToAction("Index");
         }
         

@@ -42,6 +42,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseMiddleware<CookiesMiddleware>();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Client}/{action=Index}/{id?}");

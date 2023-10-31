@@ -740,3 +740,12 @@ E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\refint\ExpenseTracker.dll
 E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ExpenseTracker.pdb
 E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ExpenseTracker.genruntimeconfig.cache
 E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ref\ExpenseTracker.dll
+E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ExpenseTracker.csproj.GenerateResource.cache
+E:\C sharp project\ExpenseTracker\bin\Debug\net7.0\en\ExpenseTracker.resources.dll
+E:\C sharp project\ExpenseTracker\bin\Debug\net7.0\ru\ExpenseTracker.resources.dll
+E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\en\ExpenseTracker.resources.cs
+E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\en\ExpenseTracker.resources.dll
+E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ru\ExpenseTracker.resources.cs
+E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ru\ExpenseTracker.resources.dll
+E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ExpenseTracker.Resources.Views.Client.Index.en.resources
+E:\C sharp project\ExpenseTracker\obj\Debug\net7.0\ExpenseTracker.Resources.Views.Client.Index.ru.resources

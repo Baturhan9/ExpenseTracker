@@ -18,6 +18,7 @@ public class LanguageMiddleware
             // Установка выбранного языка
             Thread.CurrentThread.CurrentCulture = new CultureInfo(lang);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
+            
         }
 
         await _next.Invoke(context);

@@ -64,9 +64,9 @@ app.UseMiddleware<LanguageMiddleware>();
  
 
 app.MapControllerRoute(
-    name: "language",
-    pattern: "{controller=Language}/{action=Change}/{lang?}");
-app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Client}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "language",
+    pattern: "{controller=Language}/{action=Change}/{lang?}");
 app.Run();

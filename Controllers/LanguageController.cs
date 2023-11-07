@@ -19,6 +19,8 @@ namespace ExpenseTracker.Controllers
         [HttpPost]
         public IActionResult Change(string lang)
         {
+          
+ 
             HttpContext.Response.Cookies.Append("lang", lang);
 
             return Redirect(Request.Headers["Referer"].ToString());
